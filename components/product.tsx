@@ -3,8 +3,10 @@
 import { nanoid } from '@/node_modules/nanoid/index';
 
 import React from 'react'
-import { useDispatch, UseDispatch } from '@/node_modules/react-redux/dist/react-redux';
+import { useDispatch, UseDispatch, useSelector } from '@/node_modules/react-redux/dist/react-redux';
 import { addProductToWishList } from '@/app/redux/features/wishlist';
+import { RootState } from '@reduxjs/toolkit/query';
+import { useRouter } from 'next/navigation';
 
 export interface productProps {
     productImage: string;
@@ -19,10 +21,14 @@ export interface productProps {
 const Product = ({ productImage, productName, percentageOff, productOffPrice, productPrice, rating, review }: productProps) => {
     const dispatch = useDispatch()
 
+    const router = useRouter()
+
     const addtoWishList = (event: React.MouseEvent) => {
         event.preventDefault()
 
-        //alert('Added to wishlist')
+        // Get current wishlist and verify this product isnt in wishList yet
+        //const wishList = useSelector((state:RootState) => state.wishList)
+
 
         // First Update the wishlist in redux and then update the wishlist in the database
         dispatch(addProductToWishList({
@@ -61,8 +67,12 @@ const Product = ({ productImage, productName, percentageOff, productOffPrice, pr
     }
 
     return (
-        <div className='flex flex-col gap-4 min-w-[270px] scroll-item' >
-            <div className='bg-[#F5F5F5] pt-3 px-3 relative h-[250px] flex items-center group cursor-pointer' >
+        <div className='flex flex-col gap-4 min-w-[270px] scroll-item'>
+            <div className='bg-[#F5F5F5] pt-3 px-3 relative h-[250px] flex items-center group cursor-pointer'
+                onClick={() => {
+                    router.push(`/${productName}`)
+                }}
+            >
                 {percentageOff &&
                     <div className="absolute top-3 left-3 bg-[#DB4444] rounded px-2 py-1 " >
                         <span className="text-[#FAFAFA] text-xs font-semibold " > - {percentageOff}% off</span>   

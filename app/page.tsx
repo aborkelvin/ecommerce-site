@@ -11,10 +11,6 @@ import { RootState } from "./types"
 
 
 
-
-
-
-
 const Home = () => {
     
     const products = useSelector((state: RootState) => state.products)
