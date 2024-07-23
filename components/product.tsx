@@ -23,7 +23,8 @@ const Product = ({ productImage, productName, percentageOff, productOffPrice, pr
 
     const router = useRouter()
 
-    const addtoWishList = (event: React.MouseEvent) => {
+    const addtoWishList = (event: React.MouseEvent<HTMLImageElement>) => {
+        event.stopPropagation()
         event.preventDefault()
 
         // Get current wishlist and verify this product isnt in wishList yet

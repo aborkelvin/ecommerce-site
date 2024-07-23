@@ -70,7 +70,7 @@ const Navbar = () => {
                     />
                     <div className='bg-[#DB4444] w-6 h-6 absolute -top-2 -right-2 text-sm hidden md:flex items-center justify-center rounded-full' >{wishListData.length}</div>
                 </Link>
-                <Link className="relative w-fit" href= '/wishlist' >
+                <Link className="relative w-fit" href= '/cart' >
                     <img
                         src="/images/cart.svg"
                         alt="cart"                    
