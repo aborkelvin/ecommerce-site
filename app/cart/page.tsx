@@ -1,5 +1,6 @@
-
 function Cart(){
+
+    
     
     return (
         <div className="px-[17px] md:px-[47.5px] 2xl:px-[135px] py-20" >
