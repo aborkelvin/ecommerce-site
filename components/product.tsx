@@ -30,7 +30,6 @@ const Product = ({ productImage, productName, percentageOff, productOffPrice, pr
         // Get current wishlist and verify this product isnt in wishList yet
         //const wishList = useSelector((state:RootState) => state.wishList)
 
-
         // First Update the wishlist in redux and then update the wishlist in the database
         dispatch(addProductToWishList({
             productImage,
@@ -41,6 +40,29 @@ const Product = ({ productImage, productName, percentageOff, productOffPrice, pr
             rating,
             review
         }))
+
+        // Update wishlist in local storage for those that are not logged in
+
+        // If wishlist in database fails, then revert the wishlist in redux to the previous state else do nothing
+    }
+
+    const addtoCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.stopPropagation()
+        event.preventDefault()
+
+        // Get current cart and verify this product isnt in cart yet
+        //const wishList = useSelector((state:RootState) => state.wishList)
+
+        // First Update the wishlist in redux and then update the wishlist in the database
+        /* dispatch(addProductToWishList({
+            productImage,
+            productName,
+            percentageOff,
+            productOffPrice,
+            productPrice,
+            rating,
+            review
+        })) */
 
         // Update wishlist in local storage for those that are not logged in
 
@@ -92,7 +114,7 @@ const Product = ({ productImage, productName, percentageOff, productOffPrice, pr
                 <img src={productImage} alt={productName} className='object-contain mx-auto max-w-[190px] ' />
 
                 <button className='w-full absolute py-2 bg-black text-white font-medium text-center bottom-0 left-0
-                    hidden group-hover:block ' >
+                    lg:hidden group-hover:block ' onClick={addtoCart} >
                     Add To Cart
                 </button>
             </div>
