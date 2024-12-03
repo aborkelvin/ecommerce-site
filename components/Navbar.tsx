@@ -77,13 +77,15 @@ const Navbar = () => {
                         className='w-8 h-8 cursor-pointer'
                     />
                 </Link>
-                <Image
-                    src="/images/user.svg"
-                    alt="user"
-                    width={32}
-                    height={32}
-                    className='hidden md:block cursor-pointer'
-                />
+                <Link href={'/profile'} >
+                    <Image
+                        src="/images/user.svg"
+                        alt="user"
+                        width={32}
+                        height={32}
+                        className='hidden md:block cursor-pointer'
+                    />
+                </Link>
 
             </div>
         </div>
